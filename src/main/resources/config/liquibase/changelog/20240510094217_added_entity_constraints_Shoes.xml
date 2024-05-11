@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Shoes.
+    -->
+    <changeSet id="20240510094217-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="shoes"
+                                 constraintName="fk_shoes__category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="brand_id"
+                                 baseTableName="shoes"
+                                 constraintName="fk_shoes__brand_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="brand"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="collection_id"
+                                 baseTableName="shoes"
+                                 constraintName="fk_shoes__collection_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="collection"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="shoe_purpose_id"
+                                 baseTableName="shoes"
+                                 constraintName="fk_shoes__shoe_purpose_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shoe_purpose"
+                                 />
+    </changeSet>
+</databaseChangeLog>

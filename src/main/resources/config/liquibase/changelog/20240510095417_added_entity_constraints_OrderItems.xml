@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity OrderItems.
+    -->
+    <changeSet id="20240510095417-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="orders_id"
+                                 baseTableName="order_items"
+                                 constraintName="fk_order_items__orders_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="orders"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="colors_id"
+                                 baseTableName="order_items"
+                                 constraintName="fk_order_items__colors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="colors"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="shoe_variants_id"
+                                 baseTableName="order_items"
+                                 constraintName="fk_order_items__shoe_variants_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shoe_variants"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="sizes_id"
+                                 baseTableName="order_items"
+                                 constraintName="fk_order_items__sizes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sizes"
+                                 />
+    </changeSet>
+</databaseChangeLog>

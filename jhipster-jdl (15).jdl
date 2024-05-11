@@ -1,0 +1,166 @@
+
+application {
+  config {
+    baseName shoeStore
+    applicationType monolith
+    packageName com.shoes
+    authenticationType jwt
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Customer {
+	id Long
+    email String
+    password String
+    createdAt Instant
+}
+entity CustomerDetails {
+	id Long
+    firstName String
+    secondName String
+    gender String
+    dateOfBirth Instant
+}
+
+enum CategoryName{
+	MEN,
+    WOMEN,
+    KIDS	
+}
+enum Status {
+ 	BEST_SELLER
+    SALE
+    IN_STOCK
+    COMING_SOON
+    
+}
+enum ShoePurposeType{
+	SPORT
+	LIFESTYLE
+    TRAINING
+    BASKETBALL
+    GOLF
+    DANCE
+    TRAINING
+    GYM
+}
+entity Category{
+	id Long
+	name CategoryName
+}
+entity Brand{
+	id Integer
+    name String
+    
+}
+entity Collection{
+	id Integer
+    name String
+    
+}
+entity ShoePurpose {
+	id Integer
+    type ShoePurposeType
+}
+
+
+entity Shoes {
+	id Long
+    description String
+}
+entity ShoeVariants {
+	id Long
+    quantity Integer
+    status Status 
+    photoUrl String  
+}
+entity ShoeVariantColors {
+	id Long
+    price Float
+    imageUrl String
+}
+entity ShoeVariantSizes {
+	id Long
+    quantity Integer
+    status Status
+}
+entity Sizes {
+	id Integer
+    sizeInNumbers Float
+    sizeInLetters String
+}
+entity Sales {
+ 	id Long
+ 	startDate Instant
+    endDate Instant
+    discountPercentage Integer
+    newPrice Integer
+}
+entity Colors {
+	id Integer
+    colorName String
+}
+entity WishList {
+	id Long
+    createdAt Instant   
+}
+entity WishListItems {
+	id Long
+}
+entity Cart {
+	id Integer
+    createdAt Instant
+}
+entity CartItems {
+	id Long
+  	quantity Integer
+}
+entity Orders {
+	id Long
+    totalPrice Long
+    orderDate Instant
+    status OrderStatus
+}
+enum OrderStatus {
+	DELIVERED
+    COLLECTED
+}
+entity OrderItems {
+	id Long
+    quantity Integer
+    price Long
+}
+relationship ManyToOne {
+	Shoes to Category
+    Shoes to Brand
+    Shoes to Collection
+    Shoes to ShoePurpose
+    ShoeVariantColors to ShoeVariants
+    ShoeVariantColors to Colors
+    ShoeVariantSizes to Sizes
+    ShoeVariants to Shoes
+    ShoeVariants to Sales
+    CartItems to Cart
+    WishListItems to WishList
+    ShoeVariantSizes to ShoeVariants
+    OrderItems to Orders
+    Orders to Customer
+    CartItems to Colors
+    CartItems to ShoeVariants
+    CartItems to Sizes
+    OrderItems to Colors
+    OrderItems to ShoeVariants
+    OrderItems to Sizes
+}
+relationship OneToOne {
+  Cart to Customer
+  CustomerDetails to Customer
+  WishList to Customer
+}
+relationship ManyToMany {
+	ShoeVariants to Sizes
+}
+
+
